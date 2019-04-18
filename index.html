@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-EN">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, viewport-fit=cover" />
+		<meta name="format-detection" content="telephone=no"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+		<title>Form</title>
+
+		<meta name="theme-color" content="#237BEF">
+		<meta name="msapplication-TileColor" content="#237BEF">
+		<meta name="msapplication-navbutton-color" content="#237BEF">
+		<meta name="apple-mobile-web-app-status-bar-style" content="#237BEF">
+
+		<link rel="preload" href="./public/css/style.min.css" as="style">
+		<link rel="preload" href="./public/js/script.min.js" as="script">
+
+		<link rel="stylesheet" href="./public/css/style.min.css">
+	</head>
+	<body class="body">
+		<div class="wrap">
+			<header class="header">
+				<div class="header__content">
+					<div class="header__block-button">
+						<button class="header__button js-modal-show">login</button>
+					</div>
+				</div>
+			</header>
+		</div>
+
+		<div class="modal js-modal">
+			<div class="modal__background">
+				<div class="modal__content">
+					<div class="modal__form">
+						<form id="form" class="form">
+							<div class="form__content">
+								<div class="form__block-exit js-modal-exit">
+									<div class="form__exit"></div>	
+								</div>
+
+								<div class="form__heading">Log in</div>
+
+								<div class="form__block">
+									<div class="form__block-items">
+										<div class="form__item">
+											<label class="form__label">
+												<div class="form__label-text">Email</div>
+												<input type="email" class="form__input js-form-item">
+											</label>
+										</div>
+										<div class="form__item form__item--password">
+											<label class="form__label">
+												<div class="form__label-text">Password</div>
+												<input id="password" type="password" class="form__input form__input--password js-form-item js-password">
+											</label>
+
+											<div class="form__show-password js-password-toggle">
+												<label class="form__show-password-label js-password-label">
+													<input type="checkbox" class="form__show-password-checkbox">
+												</label>
+											</div>
+										</div>
+									</div>
+									
+									<div class="form__block-buttons">
+										<div class="form__block-button js-button">
+											<button class="form__button">Authorise&nbsp;me</button>
+
+											<div class="form__spinner"></div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form__block-links">
+									<a class="form__link" href="#" target="_blank">Go&nbsp;to&nbsp;registration form</a>
+									<a class="form__link" href="#" target="_blank">Forgot password?</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="./public/js/script.min.js"></script>
+	</body>
+</html>
