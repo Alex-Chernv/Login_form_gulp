@@ -8,61 +8,10 @@
 }
 
 .form {
-	background: $white;
 	border-radius: 4px;
 
 	&__content {
 		position: relative;
-		max-width: 406px;
-		padding: 31px 38px 34px;
-		text-align: center;
-	}
-
-	&__block-exit {
-	    position: absolute;
-	    top: 0px;
-	    right: -55px;
-		padding: 20px;
-	}
-
-	&__exit {
-		position: relative;
-	  	width: 25px;
-	  	height: 25px;
-	  	cursor: pointer;
-
-		&:before,
-		&:after {
-		    content: '';
-		    position: absolute;
-		    height: 2px;
-		    width: 100%;
-		    top: 50%;
-		    left: 0;
-		    background: $white;
-		    transition: background .4s;
-		}
-
-		&:before {
-		    transform: rotate(45deg);
-		}
-
-		&:after {
-		    transform: rotate(-45deg);
-		}
-	}
-	&__exit:hover {
-		&:before,
-		&:after {
-			background: $gray;
-		}
-	}
-
-	&__heading {
-		margin-bottom: 29px;
-		font-style: normal;
-		font-size: 24px;
-		line-height: normal;
 		text-align: center;
 	}
 
@@ -73,12 +22,9 @@
 			opacity: 0.4
 		}
 		&.is-disabled:before {
+			@mixin position-absolute-top-left;
+			@mixin base-size;
 			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
 			z-index: $z-index-level-2;
 		}
 	}
@@ -109,10 +55,9 @@
 	}
 
 	&__label {
+		@mixin base-size;
 		position: relative;
 		float: left;
-		width: 100%;
-		height: 100%;
 		padding: 0px 1px;
 		border: 1px solid $gray;
 		border-bottom: none;
@@ -144,13 +89,9 @@
 		}
 
 		&-text {
-			position: absolute;
-			top: 0px;
-			left: 0px;
+			@mixin position-absolute-top-left;
+			@mixin text-base;
 			padding: 0px 5px;
-			font-style: normal;
-			font-weight: normal;
-			line-height: normal;
 			transform: translate(7px, 14.9px);
 			transition: transform .4s, background .4s, color .4s;
 			background: transparent;
@@ -168,17 +109,14 @@
 	}
 
 	&__input {
-		width: 100%;
-		height: 100%;
+		@mixin base-size;
 		padding-left: 10.9px;
 		box-sizing: border-box;
 		transition: border .4s;
 	}
 
 	&__show-password {
-	    position: absolute;
-	    top: 0;
-	    right: 0;
+		@mixin position-absolute-top-right;
 	    height: 100%;
 	    width: 60px;
 		background-image: url("../i/svg/eye.svg");
@@ -188,6 +126,11 @@
 		&-checkbox {
 			visibility: hidden;
 		}
+
+		&-label {
+			@mixin base-size;
+			float: left;
+		}
 	}
 	&__label.is-active ~ &__show-password {
 		background-image: url("../i/svg/eye-active.svg");
@@ -196,29 +139,25 @@
 		background-image: url("../i/svg/eye-error.svg");
 	}
 
-	&-password-label {
-		float: left;
-		width: 100%;
-		height: 100%;
-	}
+	&__block {
+		&-buttons {
+			margin-bottom: 24px;
+		}
 
-	&-buttons {
-		margin-bottom: 24px;
-	}
+		&-button {
+			position: relative;
+			display: inline-block;
+			padding: 2px;
+			border-radius: 90px;
+			transition: background .4s;
 
-	&-button {
-		position: relative;
-		display: inline-block;
-		padding: 2px;
-		border-radius: 90px;
-		transition: background .4s;
-
-		&:hover {
-			background: rgba(35, 123, 239, 0.5);
+			&:hover {
+				background: rgba(35, 123, 239, 0.5);
+			}
 		}
 	}
-
 	&__block-button.error &__button {
+		border: none;
 		background: $red;
 		color: $white;
 	}
@@ -227,18 +166,13 @@
 	}
 
 	&__button {
+		@mixin text-base;
 		width: 227px;
 		height: 45px;
 		border: 1px solid $blue;
 		box-sizing: border-box;
 		border-radius: 90px;
-
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
 		font-size: 16px;
-		line-height: normal;
-		text-align: center;
 		
 		background: $white;
 		color: $blue;
@@ -250,12 +184,9 @@
 	}
 
 	&__link {
+		@mixin text-base;
 		padding: 5px;
-		font-family: Roboto;
-		font-style: normal;
-		font-weight: normal;
 		font-size: 12px;
-		line-height: normal;
 		border-radius: 2px;
 		border: 2px solid $white;
 		transition: border .4s;
@@ -279,8 +210,8 @@
 		&:before {
 		    animation: 1.5s linear infinite spinner;
 		    animation-play-state: inherit;
-		  	border: solid 3px #dedede;
-		  	border-bottom-color: #ffffff;
+		  	border: solid 3px $white;
+		  	border-bottom-color: $blue;
 		  	border-radius: 50%;
 		  	content: "";
 		  	height: 26px;
@@ -303,18 +234,15 @@
 			max-width: none;
 		}
 
-		&__block-exit {
-			right: 0px;
-		}
-	
-		&__exit {
-			&:before,
-			&:after {
-				background: $black;
-			}
+		&__item {
+			width: 100%;
 		}
 
-		&__item {
+		&__block-links {
+			flex-flow: row wrap;
+		}
+
+		&__link {
 			width: 100%;
 		}
 

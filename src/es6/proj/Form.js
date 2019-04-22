@@ -47,26 +47,39 @@ function ItemForm () {
 	Array.from(elements).forEach(function(element) {
 		var status = false;
 
-      	element.addEventListener('keyup', function() {
-      		elemntKey.call(this);
-  		}, true);
+        element.addEventListener('focus', function() {
+            _addClass.call(this);
+        }, true);
+        element.addEventListener('blur', function() {
+           _removeClass.call(this);
+        }, true);
 
+      	element.addEventListener('keyup', function() {
+      		elementKey.call(this);
+  		}, true);
       	element.addEventListener('keydown', function() {
-      		elemntKey.call(this);
+      		elementKey.call(this);
   		}, true);
     });
 
-    function elemntKey() {
+    function elementKey() {
   		if(!this.value.length && status) {
-  			this.parentElement.classList.remove('is-active');
-
-  			status = false;
+  			_addClass.call(this);
   		} else if(this.value.length) {
-  			this.parentElement.classList.add('is-active');
-
-  			status = true;
+  			_removeClass.call(this);
   		}
     };
+
+    function _addClass() {
+        this.parentElement.classList.add('is-active');
+        status = true;
+    };
+    function _removeClass() {
+        if(!this.value.length) {
+            this.parentElement.classList.remove('is-active');
+            status = false;
+        }
+    }
 };
 
 export { 
